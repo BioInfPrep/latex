@@ -1,0 +1,17 @@
+# Ignore files
+
+
+# Latex-Tmp Files
+**/*.aux
+**/*.bib
+**/*.log
+**/*.nav
+**/*.out
+**/*.pdf
+**/*.snm
+**/*.toc
+**/*.vrb
+
+
+# Ignore FIGURES
+**/figures/*

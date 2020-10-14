@@ -1,0 +1,839 @@
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+\usecolortheme{beaver}
+\usepackage[utf8]{inputenc}
+\usepackage{blindtext}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{verbatim}
+\usepackage{textcomp}
+\usepackage{framed}
+
+
+\title[Basic \LaTeX{}]{Using \LaTeX{} with Overleaf}
+\author{Simone Lederer}
+\institute[]
+{Algorithms in Bioinformatics, ZBIT\\
+  University of T\"{u}bingen
+}
+\date[Vorkurs WiSe 2020/21]{Oct 2021, Prep-Bioinformatics Course}
+\logo{\includegraphics[height=0.5cm]{figures/grey_unituebingen.png}\includegraphics[height=0.7cm]{figures/grey_MPI.png}}
+\colorlet{palestgray}{gray!20}
+
+\begin{document}
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+\frame{\titlepage}
+
+\begin{frame} %[shrink=5]
+\frametitle{Word processors and plain-tex}
+\begin{columns}
+\column[T]{0.48\textwidth}
+    \begin{figure}
+        % \centering
+        \caption{A modern graphical word processor}
+        \includegraphics[height=1.5cm]{figures/word-2016.png}
+    \end{figure}
+    \begin{figure}
+        % \centering
+        \caption{... and its best friend}
+        \includegraphics[height=1.5cm]{figures/power_point_logo.jpg}
+    \end{figure}
+\column[T]{0.48\textwidth}
+    \begin{figure}
+        % \centering
+        \caption{And the familiar problems...}
+        \includegraphics[width=5.5cm, trim={0 0 0 0.5cm}]{figures/WordMemes.jpg}
+    \end{figure}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}[shrink=15]
+\frametitle{{\TeX} and {\LaTeX}}
+    
+\begin{columns}
+    \column[T]{0.5\textwidth}
+    \begin{itemize}
+        \item \includegraphics[height=0.4cm]{figures/TeX_logo.png}
+        \begin{itemize}
+            \item designed by Donald E. Knuth in 1978
+            \item a typographical system that does typesetting (tex core)
+            \item set up stuff like how to place a graph or insert bibliographies (plain-tex)
+        \end{itemize}
+    \end{itemize}
+    \begin{figure}
+        \centering
+            \includegraphics[height=4cm]{figures/Knuth.jpg}%
+            \caption{Dr. Donald. E. Knuth}
+    \end{figure}
+    
+
+    \column[T]{0.5\textwidth}
+    \begin{itemize}
+        \item \includegraphics[height=0.4cm]{figures/LaTeX_logo.png}
+        \begin{itemize}
+            \item written by Leslie Lamport, released in 1983
+            \item a generalised set of macros built on top of {\TeX}
+        \end{itemize}
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[height=4cm]{figures/Lamport.jpg}
+        \caption{Dr. Leslie Lamport}
+    \end{figure}
+\end{columns}
+\end{frame}
+
+%%%%%%%%%The bare minimum
+\begin{frame}{The bare minimum}
+The recipe:\\
+\begin{enumerate}
+    \item write source code in my favorite text editor
+    \item execute source code: \texttt{pdflatex source\_code.tex}
+\end{enumerate}
+\pause
+\centering
+\color{palestgray}{\textit{\Huge{Things we won't do later on...}}}
+\end{frame}
+
+
+%%%%%introducing overleaf
+\begin{frame}
+\frametitle{Use Overleaf}
+Steps: 1) click in the website and register
+\hspace{6pt}%
+2) start a new project
+\begin{figure}
+    \centering
+    \includegraphics[width=10cm, trim=0 2.5cm 0 0, clip]{figures/Screen_shot_overleaf.png}
+\end{figure}
+\end{frame}
+
+%%%%% The Bare Minimum
+\begin{frame}[fragile]
+\frametitle{\textit{Hello World} in Overleaf}
+\begin{columns}
+\column{0.45\linewidth}
+\begin{framed}
+\begin{verbatim}
+\documentclass{article}
+...
+\begin{document}
+...
+\end{document}
+\end{verbatim}
+\end{framed}
+\column{0.45\linewidth}
+
+{\color{purple}\textbackslash}\hspace{5pt}
+here goes the command\\
+{\color{purple}\%}\hspace{5pt}
+here comes the comment.\\
+{\color{purple}\{\}}\hspace{5pt}
+mandatory arguments;\\
+tell \LaTeX{} this is a group\\\bigskip
+{\small{\color{purple}\verb$\begin{...}$\\...\\\verb$\end{...}$}}\\
+delimit an environment
+
+\end{columns}
+    
+\end{frame}
+
+%%%%%%hello world in overleaf (con'd)
+\begin{frame}[fragile]
+\frametitle{\textit{Hello World}{\small{(con'd)}}: \textit{document} environment}
+\begin{columns}
+\column{0.5\linewidth}
+\textbf{\%Preamble}
+\begin{verbatim}
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\pagestyle{empty}
+\end{verbatim}
+\smallskip
+{\color{purple}\verb$\begin{document}$}\\
+\bigskip
+\textbf{\%Top matter}
+\begin{verbatim}
+\title{Tardis User Manual}
+\author{Dr. Who}
+\date{October 2019}
+\maketitle
+\end{verbatim}
+{\color{purple}\verb$\end{document}$}
+\column{0.45\linewidth}
+\includegraphics[width=0.95\columnwidth]{figures/example_extrm_simple_doc.pdf}
+\end{columns}
+   
+\end{frame}
+
+
+%%%%exercise 001
+\begin{frame}
+\frametitle{Exercise 01}
+\centering
+{\Huge{Simple.tex}}\par
+\vspace{12pt}make the simplest document with title and author info
+    
+\end{frame}
+
+%%%%Structure of an article
+\begin{frame}
+\frametitle{Structure of an article}
+In principle, all elements of a document can be controlled with commands.\par
+In an article:\par
+\begin{itemize}
+    \item Abstract
+    \item Paragraphs. Maybe hierarchical
+    \item Tables, figures
+    \item Bibliography
+    \item Page layout like headers, footers, margins
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Structure of an article \small{(con{\textquotesingle}d)}}
+\textbf{Abstract}
+delimited as an environment
+\begin{columns}
+\column{0.5\linewidth}
+\begin{verbatim}
+\begin{abstract}
+Insert text here. 
+\end{abstract}
+\end{verbatim}
+\column{0.45\linewidth}
+\includegraphics[width=0.95\columnwidth]{figures/abstract.png}
+\end{columns}
+\vspace{15pt}What can be changed:
+\begin{itemize}
+    \item title of abstract (default: Abstract)
+    \item text alignment
+    \item margin
+\end{itemize}
+\end{frame}
+
+%%%%%Structure of an article: paragraph hierarchy
+\begin{frame}[fragile]
+\frametitle{Structure of an article \small{(con{\textquotesingle}d)}}
+\textbf{About text conjuction}
+\begin{itemize}
+    \item \LaTeX{} ignores leading and trailing whitespaces/tabs
+    \item line break is triggered by this command {\verb$\\$}, not by pressing ENTER
+    \item new paragraph command {\verb$\par$}
+    \item new line $\neq$ new paragraph
+\end{itemize}
+\textbf{Paragraph Sectioning}
+\begin{itemize}
+    \item  {\verb$\section{Title here}$} \par
+    No need to markup the block like it in \textit{Abstract}.\par
+    \item sections are numbered\par
+    use {\verb$\section*{Title here}$} to un-number.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Structure of an article \small{(con{\textquotesingle}d)}}
+\textbf{Section hierarchy}\par
+\vspace{12pt}
+\begin{columns}
+\column{0.5\linewidth}
+\begin{tabular}{l|l}
+   1  & section \\
+   1.1  & subsection\\
+   1.1.1 & subsubsection
+\end{tabular}\par
+\column{0.5\linewidth}
+All these levels are above paragraph. 
+Subparagraph is below paragraph (visible differences in indention).
+\end{columns}
+\vspace{12pt}Not all sectioning are implemented in a certain document type. e.g., 
+most of the above are not in letters.
+\end{frame}
+
+%%%%exercise 02: creating an article
+\begin{frame}[fragile]
+\frametitle{Exercise 02}
+\centering
+{\Huge{Article.tex}}\par
+\vspace{12pt}make an article with abstract and sectioning\par\vfill
+Dummy text can be generated from package \texttt{blindtext} or \texttt{lipsum}\par
+\hspace{12pt}{\verb$\lipsum[1-3]$} or {\verb$\blindtext$}
+\end{frame}
+
+
+
+%%%%% Paragraph formatting
+\begin{frame}
+\frametitle{Paragraph formatting}
+\begin{columns}
+    \column[T]{0.48\linewidth}
+    \textbf{Capabilities}\vspace{12pt}
+    \begin{itemize}
+        \item text alignment
+        \item indentation
+        \item spacing between lines
+        \item spacing between paragraphs
+    \end{itemize}
+    \column[T]{0.48\linewidth}
+    \textbf{Specially...}\vspace{12pt}
+    % \begin{columns}
+        % \column{0.5\columnwidth}
+        \includegraphics[width=0.33\columnwidth]{figures/special_parag_01.png}
+        % \column{0.5\columnwidth}
+        \includegraphics[width=0.33\columnwidth]{figures/special_parag_02.png}
+        % \column{0.5\columnwidth}
+        \includegraphics[width=0.33\columnwidth]{figures/special_parag_04.png}
+    % \end{columns}
+\vspace{12pt}
+\includegraphics[width=0.98\columnwidth]{figures/special_math_formula.png}\vspace{12pt}
+\end{columns}
+    
+\end{frame}
+%%%%%paragraph formatting (con'd 01)
+\begin{frame}[fragile]
+\frametitle{Paragraph formatting \small{(con{\textquotesingle}d)}}
+\textbf{text alignment}\par
+\begin{itemize}
+\small
+    \item justified, ragged; to the left/right/center.
+    \item Normally paragraphs are \emph{flushed} on both ends, i.e. left and right \emph{justified}
+    \item change alignment using an environment or {\verb$\raggedright{}$} command
+\end{itemize}\par
+\footnotesize
+  \begin{verbatim}
+     \begin{flushleft}
+     content here.            \raggedright{content here.}
+     \end{flushleft}
+\end{verbatim}
+
+\begin{itemize}
+    \item Centering: {\verb$\centering{content here.}$}, or
+\end{itemize}
+\begin{verbatim}
+      \begin{center}
+      content here.
+      \end{center}
+\end{verbatim}
+    
+\end{frame}
+%%%%paragraph formatting (con'd 02)
+\begin{frame}[fragile]
+\frametitle{Paragraph formatting \small{(con{\textquotesingle}d)}}
+\textbf{Spacing}\par
+\begin{itemize}
+    \item local changes: {\verb$\vspace{size}$}, {\verb$\smallskip \medskip \bigskip$}
+    \item Aiming at a larger scope:\par
+    put the commands inside an environment.\par
+    It will take effect where its source code is written, and end with this environment
+\end{itemize}
+\footnotesize
+\begin{verbatim}
+    \setlength{\parskip}{6pt}   % space between paragraph = 6pt
+    \renewcommand{\baselinestretch}{2}  % space between lines twice
+                                        the current size
+\end{verbatim}
+\normalsize
+\begin{itemize}
+    \item global changes: override default in the preamble
+\end{itemize}
+\vfill
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Paragraph formatting \small{(con{\textquotesingle}d)}}
+\textbf{Indentation}
+\begin{itemize}
+    \item \LaTeX doesn't care how many whitespaces you typed at the beginning of a line.
+    \item Implementation of indention varies among doc types and environments
+    \item Override the default: in the same manner as \emph{spacing}
+\end{itemize}
+\vspace{12pt}
+\hspace{2em}Add some horizontal space: {\verb$\hspace{length}$}\par
+\hspace{2em}Change settings: {\verb$\setlength{\parindent}{length}$}
+\vfill
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Paragraph formatting {\small (con{\textquotesingle}d)}: Listing}
+\begin{columns}
+    \column{0.75\linewidth}
+    \centering
+    \includegraphics[width=0.2\columnwidth]{figures/special_parag_01.png}
+    \includegraphics[width=0.2\columnwidth]{figures/special_parag_02.png}
+    \includegraphics[width=0.2\columnwidth]{figures/special_parag_04.png}
+\end{columns}
+\bigskip
+Types: \emph{enumerate}, \emph{description}, \emph{itemize}
+\footnotesize
+\begin{columns}
+\column{0.3\linewidth}
+\begin{verbatim}
+\begin{enumerate}
+\item item_1
+\item item_2
+\item item_3
+\end{enumerate}
+    \end{verbatim}
+    \column{0.4\linewidth}
+    \begin{verbatim}
+\begin{description}
+\item [item_1] about item_1
+\item [item_2] about item_2
+\item [item_3] about item_3
+\end{description}
+    \end{verbatim}
+    \column{0.25\linewidth}
+        \begin{verbatim}
+\begin{itemize}
+\item item_1
+\item item_2
+\item item_3
+\end{itemize}
+    \end{verbatim}
+\end{columns}
+\end{frame}
+
+
+%%%%exercise 03: Format paragraphs
+\begin{frame}
+\frametitle{Exercise 03}
+\centering
+{\Huge{Paragraph.tex}}\par
+\vspace{12pt}Format paragraphs. Change indentation, spacing, add some bullet points.
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{\LaTeX \hspace{1ex}measurement units}
+\begin{columns}
+    \column[T]{0.5\linewidth}
+    \textbf{Absolute measurements}\\\vspace{6pt}
+    \includegraphics[width=0.9\columnwidth]{figures/latex_lengths.png}
+    \column[T]{0.5\linewidth}
+    \textbf{Predefined lengths}\par
+    \footnotesize
+    \begin{verbatim}
+\parskip    \parindent
+\smallskip  \bigskip    \medskip
+\textwidth  \linewidth  \columnwidth
+    \end{verbatim}
+    \begin{itemize}
+        \item More flexible when fitting figures and tables
+        \item relative measurements
+    \end{itemize}
+        
+\end{columns}
+    
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Text formatting}
+\textbf{Capabilities}\par
+\begin{center}
+    {\LARGE font size}\hspace{18pt}\textrm{font styles}\\
+    \vspace{15pt}{\color{cyan}{color}}\hspace{15pt}éñçødîng \\\vspace{15pt}
+    \hspace{15pt} \$pe\textcopyright ial ch$\alpha$rac\dag ers
+\end{center}
+\vfill
+\color{gray}{\footnotesize{Only the basics are discussed here. Packages are available for more advanced text tuning.}}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{\emph{Scope}: an example}
+Tell the difference:
+\begin{verbatim}
+    \centering                      {\centering
+    content here.\par               content here.\par
+    other stuff here.\par           other stuff here.\par}
+    More and more.                  More and more.
+\end{verbatim}
+\vfill
+\texttt{\{\}} can be used to delimit a group
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Text formatting {\small (con{\textquotesingle}d)}: Font Style}
+\textbf{Font families}
+\begin{small}
+\begin{itemize}
+    \item {\verb$\textrm{content}$}\hspace{12pt} \textrm{Roman}
+    \item {\verb$\textsf{content}$}\hspace{12pt} \textsf{Sans Sarif}
+    \item {\verb$\texttt{content}$}\hspace{12pt} \texttt{Monospace}
+\end{itemize}
+\end{small}
+\textbf{Shapes}
+\begin{small}
+\begin{itemize}
+    \item {\verb$\textit{content}$}\hspace{12pt} \textit{Italic}
+    \item {\verb$\textbf{content}$}\hspace{12pt} \textbf{Bold}
+    \item {\verb$\textsl{content}$}\hspace{12pt} \textsl{Slanted} {\footnotesize(difference to italic is visible in \textrm{Roman} font)}
+    \item {\verb$\emph{content}$}\hspace{12pt} \emph{Emphasized} 
+\end{itemize}
+\end{small}
+Use packages like \textit{fontspec} for advanced font customization.
+\vfill
+Scope: just \emph{content}
+\end{frame}
+
+%%%%%text formatting: font size
+\begin{frame}[fragile]
+\frametitle{Text formatting {\small (con{\textquotesingle}d)}: Font Size}
+In practice, 2 options for built-in font sizes:
+\begin{itemize}
+    \item Absolute sizes in {\verb$\documentclass[xpt]{article}$}\\
+    {\small options: 10pt, 11pt, 12pt for \textit{article}, \textit{report}, \textit{book}}
+    \item Built-in font size command
+\end{itemize}
+\small
+\begin{verbatim}
+    \tiny  \scriptsize  \footnotesize  \small
+                   \normalsize
+    \large  \Large  \LARGE  \huge  \Huge
+\end{verbatim}
+\normalsize
+\textbf{Scope:} Till the end of its environment if not delimited\par
+\vfill
+For arbitrary font size, use {\verb$\fontsize{cur_font_size}{line_spacing_size}$}.
+\end{frame}
+
+
+%%%%%text formatting: color
+\begin{frame}[fragile]
+\frametitle{Text formatting {\small (con{\textquotesingle}d)}: color}
+{\verb$\usepackage{xcolor}$}\par
+\begin{itemize}
+    \item preceded by package \texttt{color}, which is less flexible.
+    \item basic command: {\verb$\color{what_color}{content_to_color}$}\\
+    {\small {\verb$\textcolor{}{}$}: same except that it does not allow nesting environments}
+\end{itemize}
+
+\textbf{built-in colors}\hspace{12pt}
+\textit{black  white  blue  red  gray  green  yellow...}\par\vspace{6pt}
+\textbf{Scope} \hspace{12pt}To the end of current environment\par\vspace{6pt}
+\textbf{Mix your own color}\par
+\definecolor{prettyorange}{HTML}{FF7F00}
+    \hspace{3em}{\verb$\definecolor{name}{model}{how_to_make_in_cur_model}$}\\
+    \hspace{3em}{\color{prettyorange}{\verb$\definecolor{prettyorange}{HTML}{FF7F00}$}}
+\vfill    
+\end{frame}
+
+
+%%%%%text formatting: special characters
+\begin{frame}[fragile]
+\frametitle{Text formatting {\small (con{\textquotesingle}d)}: special characters}
+\begin{columns}
+\column[T]{0.48\linewidth}
+\textbf{Capabilities}
+\begin{itemize}
+    \item Characters to \textit{escape}\\
+    \texttt{\%\hspace{8pt}\textbackslash\hspace{8pt}\{\}\hspace{8pt}\$\hspace{8pt}\textunderscore\hspace{8pt}\textgreater}
+    \item The untypeable\\
+    \texttt{\dag\hspace{8pt}\pounds\hspace{8pt}\texttrademark\hspace{8pt}\S\hspace{8pt}\textquestiondown}
+    \item Math\\
+    $\forall$\hspace{8pt}$\infty$\hspace{8pt}$\neq$\hspace{8pt}$\subset$\hspace{8pt}$\supset$
+    \item Encoding-related\\
+    \aa\hspace{8pt}\ss\hspace{8pt}$\ddot{u}$
+\end{itemize}
+\column[T]{0.5\linewidth}
+\textbf{How-to}
+\small
+\begin{itemize}
+    \item As command in text mode: {\verb$\%  \textbackslash  \pounds$}
+    \item As command in math mode: {\verb#$\forall$  $\subset$  $\neq$#}
+    \item Google for commands
+    \item One symbol might have several implementations  in basic \LaTeX{} and extended packages
+\end{itemize}
+\end{columns}
+\vfill
+\end{frame}
+
+
+
+%%%%exercise 04: Text paragraphs
+\begin{frame}
+\frametitle{Exercise 04}
+\centering
+{\Huge{TextFormat.tex}}\par
+\vspace{12pt}Format: \texttt{YOU}\hspace{1em}{\LARGE are}\hspace{1em}{\color{red}{B\emph{e}ing}}\hspace{1em}\underline{W}$\alpha$t\textcopyright hed
+\end{frame}
+
+
+%%%%%Bibliography
+\begin{frame}
+\frametitle{Bibliography}
+\textbf{Structure of a citation}\par
+1) reference information; 2) position in the main text.\par
+Connected by reference number (\emph{key}).\par
+\vspace{12pt}
+\textbf{Information needed by \LaTeX{} in order to cite}\par
+1) reference information; 2) position in the main text\par
+Given a reference alias as \emph{key}.\par
+Reference numbering is already implemented.\par
+\vspace{12pt}
+\textbf{Capabilities}\par
+Bibliographic style
+\vfill
+\end{frame}
+
+
+%%%%%Bibliography: two ways to do it
+\begin{frame}[fragile]
+\frametitle{Bibliography{\small (con{\textquotesingle}d)}}
+\textbf{Reference information embedded}\par
+\begin{itemize}
+    \item \texttt{thebibliography} environment keeps reference information
+    \item bibliographic entry: {\verb$\bibitem{thekey}$};\\main text: {\verb$\cite{thekey}$}
+    \item manually set the format of references
+\end{itemize}\vfill
+\textbf{Import from external .bib files}\par\vspace{4pt}
+Tool: \emph{BibTex}\par
+Overleaf simplified the procedure to be:
+    \begin{enumerate}
+        \item Import: {\verb$\bibliography{file_path_no_need_extension}$}
+        \item Set style: {\verb$\bibliographystyle{style_name}$}
+        \item Cite
+    \end{enumerate}
+\end{frame}
+
+%%%%%Bibliography: style
+\begin{frame}[fragile]
+\frametitle{Bibliography{\small (con{\textquotesingle}d)}: \emph{.bib} file}
+They can be separated: {\verb$\bibliography{file1,file2,file3}$}\par\vspace{4pt}
+Or one file containing information of several references
+\footnotesize
+\begin{verbatim}
+@article{thekey,
+  title={Full Title},
+  author={Vorname1, Name1 and Vorname2, Name2 and Vorname3, Name3},
+  journal={Journal Name},
+  volume={number},
+  number={number},
+  pages={page_number},
+  year={2019},
+  publisher={Publisher Name}
+}
+
+@book{thekey,
+   ...
+   ...
+   ...
+}
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Bibliography{\small (con{\textquotesingle}d)}: Choose citation style}
+Styles in \emph{BibTex}:\\
+\texttt{unsrt}, \texttt{plain}, \texttt{abbrv}, \texttt{acm}, \texttt{alpha}, \texttt{apalike}\\
+\vspace{12pt}
+\textbf{Package \textit{natbib}}\\
+\begin{itemize}
+    \item modified {\verb$\cite{}$} to work with both author–year and numerical citations
+    \item basic command {\verb$\citet{}$} and {\verb$\citep{}$}.
+    \item add $\ast$ to list all authors in the main text.
+\end{itemize}
+\centering
+\includegraphics[height=2.5cm]{figures/natbib_screenshot.png}
+\end{frame}
+
+
+%%%%exercise 05: Citation
+\begin{frame}
+\frametitle{Exercise 05}
+\centering
+{\Huge{Bibliography.tex}}\\\vspace{8pt}
+Import citation via \emph{BibTex}; customize style with \texttt{natbib}
+\end{frame}
+
+
+%%%%Insert images
+\begin{frame}[fragile]
+
+\frametitle{Insert images}
+{\verb$\usepackage{graphicx}$}\par
+\begin{itemize}
+    \item Package \texttt{graphics} extended
+    \item inform \LaTeX{} where is the image file:\\ {\verb$\graphicspath{dir}$} (default: pwd)
+    \item include it in the document:\\ {\verb$\includegraphics[size_param]{imagefile}$}
+\end{itemize}
+
+\end{frame}
+
+
+%%%%Insert images: Problems
+\begin{frame}[fragile]
+\frametitle{Insert images {\small (con{\textquotesingle}d)}: Problems}
+\begin{itemize}
+\item Positioning among text 
+    \item Positioning at a page break
+    \item Caption, cross-reference...\vspace{8pt}
+    \footnotesize
+    \begin{columns}
+    \column[T]{0.5\linewidth}
+    A casual image:\\
+    \centering
+    \includegraphics[height=2.5cm]{figures/Emmentaler_aoc_block.jpg}
+    \column[T]{0.5\linewidth}
+    A scientific figure:
+    \begin{figure}
+        \centering
+        \includegraphics[height=2.5cm]{figures/Emmentaler_aoc_block.jpg}
+        \caption{\textrm{Figure 1: Spongebob Squarepants}}
+    \end{figure}
+    \end{columns}
+\end{itemize}
+
+\end{frame}
+
+
+%%%% Insert images: Size and positioning
+\begin{frame}[fragile]
+\frametitle{Insert images {\small (con{\textquotesingle}d)}: Size and positioning}
+\footnotesize
+{\verb$\includegraphics[height=3cm, width=5cm, scale=1.2, angle=45]{pic.png}$}\par
+\begin{itemize}
+    \item Built-in length measurements are all acceptable
+    \item Positions correspondent to source code
+    \item No captions attached
+\end{itemize}
+\end{frame}
+
+%%%% Insert images: figure environment
+\begin{frame}[fragile]
+\frametitle{Insert images {\small (con{\textquotesingle}d)}: \emph{figure} environment}
+\scriptsize
+\begin{verbatim}
+    \begin{figure}[pos_options]
+    % position options: h (here), b (bottom), t (top), p (put in a page)
+    
+        \centering
+        \includegraphics[scale=0.3]{pic.png}
+        \caption{Caption this}
+        \label{fig:my_label} % a key for in-text referencing
+        
+    \end{figure}
+\end{verbatim}
+\normalsize
+\textbf{Wrap text around figures:}
+\scriptsize \verb$\usepackage{wrapfig}{alignment}{size}$
+% \begin{verbatim}
+%         \documentclass{article}
+%         \usepackage{wrapfig}{alignment}{size}
+%         ...
+%         \begin{document}
+%         \begin{wrapfigure}
+%         ...
+%         \end{wrapfigure}
+%         ...
+%         \end{document}
+% \end{verbatim}
+\end{frame}
+
+%%%%%Floats
+\begin{frame}[fragile]
+\frametitle{\emph{Floats}}
+
+\textbf{Definition:} anything within a document that cannot be broken over a page. Or roughly, tables and figures.\par\vspace{20pt}
+\textbf{\LaTeX{}\textquoteright s solution}
+\begin{itemize}
+    \item If running out of space in current page, float the float to the next page
+    \item Fill current page with body text
+    \item {\verb$\begin{figure}[p]$} \hspace{3pt}  Gather figures to a float-only special page.
+\end{itemize}
+\vfill
+\end{frame}
+
+
+%%%%%Tables
+\begin{frame}
+\frametitle{Add tables}
+\textbf{elements formatting a table}
+\begin{itemize}
+    \item Float-related properties like figures (positioning, size)
+    \item Interior design: layout
+    \begin{itemize}
+        \item number of columns and rows
+        \item line styles
+        \item text adjusting
+    \end{itemize}
+\end{itemize}
+\vfill   
+\end{frame}
+
+
+%%%%%tables(con'd): basic to advanced
+\begin{frame}[fragile]
+\frametitle{Add tables{\small (con{\textquotesingle}d)}: \emph{tabular} environment}
+\begin{columns}
+\column[T]{0.5\linewidth}
+\scriptsize
+\begin{verbatim}
+  \begin{tabular}{ l || c | r | }
+    \hline
+    Table & Col_1 & Col_2 \\ \hline
+    Row_1 & 34 & 41 \\ \hline
+    Row_2 & 0.25 & 0.08 \\
+    \hline
+  \end{tabular}
+\end{verbatim}
+\normalsize
+\begin{itemize}
+    \item Column delimiter: \texttt{\&}
+    \item Alignment: \texttt{l  c  r}
+    \item Vertical line: \textbar\hspace{8pt} horizotal line: {\verb$\hline$}
+\end{itemize}
+\column[T]{0.5\linewidth}
+\scriptsize
+\begin{verbatim}
+\begin{tabular*}{\textwidth}{ | l | r | }
+\hline
+col_1 & col_2 \\
+\hline 
+item_1  & item_2 \\
+\hline
+\end{tabular*}
+\end{verbatim}
+\normalsize
+A subtle extension:
+
+\begin{itemize}
+    \item Specifying table width is allowed
+    \item Adjusting column width to fit in the fixed table width is allowed
+\end{itemize}
+\end{columns}
+\end{frame}
+
+
+%%%%%tables(con'd): basic to advanced
+\begin{frame}[fragile]
+\frametitle{Add tables{\small (con{\textquotesingle}d)}: More customization}
+\begin{description}
+\item[\emph{table} environment] Same as \emph{figure} env. For better placement of the table.
+\item[Package \emph{array}] For width adjustment.
+\item[Package \emph{multirow}] To merge rows in some columns.
+\item[Package \emph{longtable}] For tables across pages.
+\end{description}
+\end{frame}
+
+
+%%%%exercise 04: Add figures and tables
+\begin{frame}
+\frametitle{Exercise 05}
+\centering
+\Huge{FloatingElements.tex}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{}
+\vfill
+\centering
+\Huge{Thanks!}
+\end{frame}
+
+\end{document}
