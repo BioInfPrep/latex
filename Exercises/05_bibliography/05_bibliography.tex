@@ -1,0 +1,32 @@
+%%% EVERYTHING GLOBAL COMES HERE %%%
+%Preamble
+
+%% define document-class
+%%% can also be report/book/...
+%%% 10pt, 11pt, 12pt 
+\documentclass[12pt]{article}
+
+\usepackage{hyperref} %use url
+\usepackage[T1]{fontenc} %proper clicking and copy-pasting
+
+% include packages 
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+
+\begin{document} % every \begin{} needs an \end{}
+
+% new section
+\section{Bibliography}
+
+I can cite any article with \citet{thekey}, make references to others \citep{Lander2016} 
+or simply read \cite{HP3}.
+
+
+\bibliography{library}
+%\bibliographystyle{ieeetr}
+\bibliographystyle{unsrtnat}
+
+For more information: 
+%\url{\texttt{https://www.overleaf.com/learn/latex/Bibliography_management_with_natbib}}
+
+\end{document} % every \begin{} needs an \end{}

@@ -1,0 +1,26 @@
+%% define document-class
+%%% can also be report/book/...
+%%% 10pt, 11pt, 12pt 
+\documentclass[12pt]{article}
+
+%%% EVERYTHING GLOBAL COMES HERE %%%
+\input{00_configuration}
+\input{00_title}
+
+\begin{document} % every \begin{} needs an \end{}
+    
+    % create title within your document
+    \maketitle
+    
+    %% See the difference between 
+    %% \input{} and \include{}
+    \input{01_abstract}
+    \include{02_paragraph}
+    \input{03_textformat}
+    \include{04_floatingElements}
+    \include{05_bibliography}
+    
+    \bibliography{library}
+    \bibliographystyle{unsrtnat} %ieeetr
+
+\end{document} % every \begin{} needs an \end{}

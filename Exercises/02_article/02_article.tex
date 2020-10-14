@@ -1,0 +1,44 @@
+%%% EVERYTHING GLOBAL COMES HERE %%%
+%Preamble
+
+%% define document-class
+%%% can also be report/book/...
+\documentclass{article}
+
+% include packages 
+\usepackage[utf8]{inputenc}
+\usepackage{blindtext}
+\usepackage{lipsum}
+
+% some styles
+\pagestyle{empty}
+
+% define Title
+\title{Tardis User Manual} 
+\author{Dr. Who} 
+\date{October 2019} % or \date{\today}
+
+
+\begin{document} % every \begin{} needs an \end{}
+% create title within your document
+\maketitle
+
+\begin{abstract}
+    \blindtext
+\end{abstract}
+
+\section*{Introduction}
+\lipsum[1-3]
+
+\section*{Material}
+
+\lipsum[4-7]
+
+\section*{Results}
+\lipsum[8-9]
+
+\section*{Conclusion}
+\lipsum[10-11]
+
+
+\end{document} % every \begin{} needs an \end{}

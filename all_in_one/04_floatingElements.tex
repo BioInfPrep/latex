@@ -1,0 +1,63 @@
+% new section
+\section*{Floating Elements}
+
+\subsection{Figures}\label{figures}
+Do not forget to add the package graphicx in the preamble
+
+
+\begin{figure}[!ht]
+% position options: h (here), b (bottom), t (top), p (put in a page)
+\centering
+\includegraphics[width=0.3\textwidth]{TeX_logo.png} 
+\caption{Caption this}
+\label{fig:my_label} % a key for in-text referencing
+\end{figure}
+
+\begin{figure}[!ht]
+% position options: h (here), b (bottom), t (top), p (put in a page)
+\centering
+\includegraphics[height=3cm, width=5cm, scale=1.2, angle=45]{TeX_logo.png} 
+\caption{Some other settings for the same figure.}
+\label{fig:my_second_figure} % a key for in-text referencing
+\end{figure}
+
+
+
+
+\subsection{Tables}\label{table}
+Please find our great tables in Table~\ref{table1} and \ref{table_other}
+\begin{table}[ht]
+    \centering % centering puts your table into the center
+    \begin{tabular}{ | l || c | r | } % indicate vertical lines | and orientation in each column (l: left, c: center, r: right) 
+        \hline
+        Table & Col 1 & Col 2 \\ 
+        \hline 
+        Row1 & 34 & 41 \\ 
+        \hline
+        Row2 & 0.25 & 0.08 \\
+        \hline
+    \end{tabular}
+    \caption{this is a proper table}
+    \label{table1}
+\end{table}
+
+\begin{table}
+    \begin{tabular*}{\textwidth}{ | l | r | } 
+        \hline
+        col1 & col2 \\
+        \hline
+        item1 & item2 \\ 
+        \hline 
+    \end{tabular*}
+    \caption{This is another caption}
+    \label{table_other}
+\end{table}
+
+
+\section{More help}
+\begin{enumerate}
+    \item \url{https://de.wikibooks.org/wiki/LaTeX-Kompendium}
+    \item \url{duckduckgo.com}
+    \item some random tutorials \url{https://www.latex-tutorial.com/}
+    \item Overleaf has a great documentation
+\end{enumerate}

@@ -1,0 +1,4 @@
+This is just a general example how to structure longer documents.
+
+Create a main.tex file which includes all other files
+This way, you can easily keep an overview over the structure
