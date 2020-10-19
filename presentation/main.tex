@@ -6,23 +6,31 @@
 \usepackage{xcolor}
 \usepackage{tikz}
 \usepackage{verbatim}
+\usepackage{hyperref}
 \usepackage{textcomp}
 \usepackage{framed}
+\usepackage{datetime}
 
+% create Date, Year
+\newdateformat{monthyeardate}{%
+  \monthname[\THEMONTH], \THEYEAR}
 
 \title[Basic \LaTeX{}]{Using \LaTeX{} with Overleaf}
 \author{Simone Lederer}
 \institute[]
 {Algorithms in Bioinformatics, ZBIT\\
-  University of T\"{u}bingen
+  University of T\"{u}bingen \\ 
 }
-\date[Vorkurs WiSe 2020/21]{Oct 2021, Prep-Bioinformatics Course}
+\date[Vorkurs WiSe 2020/21]{\monthyeardate\today, Prep-Bioinformatics Course}
 \logo{\includegraphics[height=0.5cm]{figures/grey_unituebingen.png}\includegraphics[height=0.7cm]{figures/grey_MPI.png}}
 \colorlet{palestgray}{gray!20}
 
 \begin{document}
 \setbeamertemplate{caption}{\raggedright\insertcaption\par}
-\frame{\titlepage}
+\frame{\titlepage
+\centering
+\vspace{-10mm}
+\url{https://github.com/Sim19/vorkurs_informatik_latex}}
 
 \begin{frame} %[shrink=5]
 \frametitle{Word processors and plain-tex}
@@ -553,6 +561,20 @@ For arbitrary font size, use {\verb$\fontsize{cur_font_size}{line_spacing_size}$
 \end{frame}
 
 
+\begin{frame}
+\frametitle{Text formatting {\small (con{\textquotesingle}d)}: special characters - life hack}
+visit \url{https://detexify.kirelabs.org/classify.html} and draw symbol
+\begin{columns}
+\column[T]{.28\linewidth}
+\begin{figure}
+\includegraphics[height = 4cm]{figures/detexify_start}
+\end{figure}
+\column[T]{.68\linewidth}
+\begin{figure}
+\includegraphics[height = 3.8cm]{figures/detexify_results}
+\end{figure}
+\end{columns}
+\end{frame}
 
 %%%%exercise 04: Text paragraphs
 \begin{frame}
