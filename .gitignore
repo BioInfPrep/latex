@@ -11,7 +11,9 @@
 **/*.snm
 **/*.toc
 **/*.vrb
-
+**/*.pdfpc 
 
 # Ignore FIGURES
 **/figures/*
+
+**/*.DS_Store
