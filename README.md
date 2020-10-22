@@ -3,6 +3,7 @@
 ## presentation
 
 > contains LaTeX code for slides
+>> --> run `pdflatex main.tex` to generate one `main.pdf` file which gives you the presentation.
 
 ## Exercise
 
