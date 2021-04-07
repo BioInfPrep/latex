@@ -1,0 +1,11 @@
+Structural Comparison
+
+Structural alignment
+
+Structural alignment is a method for comparison between 3D structures based on their shape and conformation. It could be used to infer the evolutionary relationship among a set of proteins even with low sequence similarity. Structural alignment implies in superimpose a 3D structure under a second one, rotating and translating atoms in corresponding positions (in general, using the C-alpha atoms or even the backbone heavy atoms C, N, O, and C-alpha). Usually, the alignment quality is evaluated based on the root-mean-square deviation (RMSD) of atomic positions, i.e., the average distance between atoms after superimposition:
+
+where delta-i is the distance between atom i and either a reference atom corresponding in the other structure or the mean coordinate of the N equivalent atoms. In general, the RMSD outcome is measured in Angström (A) unit, which is equivalent to 10-10 m. The nearer to zero the RMSD value, the more similar are the structures.
+
+Graph-based structural signatures
+
+Structural signatures, also called fingerprints, are macromolecule pattern representations that can be used to infer similarities and differences. Comparisons among a large set of proteins using RMSD still is a challenge due to the high computational cost of structural alignments. Structural signatures based on graph distance patterns among atom pairs have been used to determine protein identifying vectors and to detect non-trivial information. Furthermore, algebra linear and machine learning can be used for clustering protein signatures, detecting protein-ligand interactions, predicting delta-delta-G, and proposing mutations based on Euclidean distance.

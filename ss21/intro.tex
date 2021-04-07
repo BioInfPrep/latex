@@ -1,0 +1,26 @@
+Introduction
+
+Protein structure
+
+The structure of a protein is directly related to its function. The presence of certain chemical groups in specific locations allows proteins to act as enzymes, catalyzing several chemical reactions. In general, protein structures are classified into four levels: primary (sequences), secondary (local conformation of the polypeptide chain), tertiary (three-dimensional structure of the protein fold), and quaternary (association of multiple polypeptide structures). Structural bioinformatics mainly addresses interactions among structures taking into consideration their space coordinates. Thus, the primary structure is better analyzed in traditional branches of bioinformatics. However, the sequence implies restrictions that allow the formation of conserved local conformations of the polypeptide chain, such as alpha-helix, beta-sheets, and loops (secondary structure). Also, weak interactions (such as hydrogen bonds) stabilize the protein fold. Interactions could be intrachain, i.e., when occurring between parts of the same protein monomer (tertiary structure), or interchain, i.e., when occurring between different structures (quaternary structure).
+
+Protein structure visualization is an important issue for structural bioinformatics. It allows users to observe static or dynamic representations of the molecules, also allowing the detection of interactions that may be used to make inferences about molecular mechanisms. The most common types of visualization are:
+
+Cartoon: this type of protein visualization highlights the secondary structure differences. In general, alpha-helix is represented as a type of screw, beta-strands as arrows, and loops as lines.
+Lines: each amino acid residue is represented by thin lines, which allows a low cost for graphic rendering.
+Surface: in this visualization, the external shape of the molecule is shown.
+Sticks: each covalent bond between amino acid atoms is represented as a stick. This type of visualization is most used to visualize interactions between amino acids
+
+DNA structure
+
+The classic DNA duplexes structure was initially described by Watson and Crick (and contributions of Rosalind Franklin). The DNA molecule is composed of three substances: a phosphate group, a pentose, and a nitrogen base (adenine, thymine, cytosine, or guanine). The DNA double helix structure is stabilized by hydrogen bonds formed between base pairs: adenine with thymine (A-T) and cytosine with guanine (C-G). Many structural bioinformatics studies have focused on understanding interactions between DNA and small molecules, which has been the target of several drug design studies.
+
+Interactions
+
+Interactions are contacts established between parts of molecules at different levels. They are responsible for stabilizing protein structures and perform a varied range of activities. In biochemistry, interactions are characterized by the proximity of atom groups or molecules regions that present an effect upon one another, such as electrostatic forces, hydrogen bonding, and hydrophobic effect. Proteins can perform several types of interactions, such as protein-protein interactions (PPI), protein-peptide interactions, protein-ligand interactions (PLI), and protein-DNA interaction.
+
+Calculating contacts
+
+Calculating contacts is an important task in structural bioinformatics, being important for the correct prediction of protein structure and folding, thermodynamic stability, protein-protein and protein-ligand interactions, docking and molecular dynamics analyses, and so on.
+
+Traditionally, computational methods have used threshold distance between atoms (also called cutoff) to detect possible interactions. This detection is performed based on Euclidean distance and angles between atoms of determined types. However, most of the methods based on simple Euclidean distance cannot detect occluded contacts. Hence, cutoff free methods, such as Delaunay triangulation, have gained prominence in recent years. In addition, the combination of a set of criteria, for example, physicochemical properties, distance, geometry, and angles, have been used to improve the contact determination.
